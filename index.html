@@ -16,18 +16,30 @@
 
     <script>
       // A sua solução será escrita aqui!
+      function calcularTroco(precoDoProduto, dinheiroRecebido) {
+        return null;
+      }
+
     </script>
 
     <script>
-      // Isso é o que um pequeno teste unitário parece:
-      test('Esse teste de exemplo deve passar sempre', (assert) => {
-        const resultado = 1 + 1
-        assert.equal(resultado, 2) // apenas para sabermos se tudo está funcionando bem
+      // Testes
+      test('Sem troco', (assert) => {
+        const troco = calcularTroco(10, 10)
+        const trocoEsperado = []
+        assert.equal(troco, trocoEsperado)
       })
-      // Um teste falhando estará colorido como vermelho:
-      test('Esse é como um teste falhando parece', (assert) => {
-        const resultado = [1,2,3].indexOf(1)  // O valor de 'resultado' será 0 (zero)
-        assert.equal(resultado, -1) // Nós esperamos que essa validação falhe
+
+      test('Troco do produto 486 e valor pago de 600', (assert) => {
+        const troco = calcularTroco(486, 600)
+        const trocoEsperado = [100, 10, 2, 2]
+        assert.equal(troco, trocoEsperado)
+      })
+
+      test('Troco do produto 215 e valor pago de 300', (assert) => {
+        const troco = calcularTroco(215, 300)
+        const trocoEsperado = [50, 20, 10, 5]
+        assert.equal(troco, trocoEsperado)
       })
     </script>
 
