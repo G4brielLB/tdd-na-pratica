@@ -51,6 +51,12 @@
         const trocoEsperado = [50, 20, 10, 5]
         assert.deepEqual(troco, trocoEsperado)
       })
+
+      test('Troco do produto 110, valor pago 200, mas sem duas notas de 20', (assert) => {
+        const troco = calcularTroco(110, 200)
+        const trocoEsperado = [50, 20, 10, 10]
+        assert.deepEqual(troco, trocoEsperado)
+      })
     </script>
 
   </body>
