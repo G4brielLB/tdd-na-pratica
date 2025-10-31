@@ -17,17 +17,16 @@
     <script>
       // A sua solução será escrita aqui!
       function calcularTroco(precoDoProduto, dinheiroRecebido, estoque) {
-        const cedulasDisponiveis = [100, 50, 20, 10, 5, 2, 1]
         let faltante = dinheiroRecebido - precoDoProduto
         let troco = []
-        for (let i = 0; i < cedulasDisponiveis.length; i++) {
-          const nota = cedulasDisponiveis[i]
-          while (faltante >= nota) {
+        for (const nota of Object.keys(estoque).map(Number).sort((a, b) => b - a)) {
+          while (faltante >= nota && estoque[nota] > 0) {
             troco.push(nota)
             faltante -= nota
+            estoque[nota] -= 1
           }
         }
-        return troco;
+        return troco
       }
 
     </script>
@@ -43,7 +42,7 @@
 
       test('Troco do produto 486 e valor pago de 600', (assert) => {
         const estoque = { 100: 1, 50: 1, 20: 1, 10: 2, 5: 5, 2: 5, 1: 5 } 
-        const troco = calcularTroco(486, 600)
+        const troco = calcularTroco(486, 600, estoque)
         const trocoEsperado = [100, 10, 2, 2]
         assert.deepEqual(troco, trocoEsperado)
       })
