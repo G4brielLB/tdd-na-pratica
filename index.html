@@ -23,23 +23,24 @@
     </script>
 
     <script>
-      // Testes
+      // Testes - deepEqual para comparar arrays
       test('Sem troco', (assert) => {
         const troco = calcularTroco(10, 10)
+        console.log("Troco vazio esperado: ", troco)
         const trocoEsperado = []
-        assert.equal(troco, trocoEsperado)
+        assert.deepEqual(troco, trocoEsperado)
       })
 
       test('Troco do produto 486 e valor pago de 600', (assert) => {
         const troco = calcularTroco(486, 600)
         const trocoEsperado = [100, 10, 2, 2]
-        assert.equal(troco, trocoEsperado)
+        assert.deepEqual(troco, trocoEsperado)
       })
 
       test('Troco do produto 215 e valor pago de 300', (assert) => {
         const troco = calcularTroco(215, 300)
         const trocoEsperado = [50, 20, 10, 5]
-        assert.equal(troco, trocoEsperado)
+        assert.deepEqual(troco, trocoEsperado)
       })
     </script>
 
