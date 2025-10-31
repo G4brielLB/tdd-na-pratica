@@ -17,7 +17,17 @@
     <script>
       // A sua solução será escrita aqui!
       function calcularTroco(precoDoProduto, dinheiroRecebido) {
-        return null;
+        const cedulasDisponiveis = [100, 50, 20, 10, 5, 2, 1]
+        let faltante = dinheiroRecebido - precoDoProduto
+        let troco = []
+        for (let i = 0; i < cedulasDisponiveis.length; i++) {
+          const nota = cedulasDisponiveis[i]
+          while (faltante >= nota) {
+            troco.push(nota)
+            faltante -= nota
+          }
+        }
+        return troco;
       }
 
     </script>
@@ -26,7 +36,6 @@
       // Testes - deepEqual para comparar arrays
       test('Sem troco', (assert) => {
         const troco = calcularTroco(10, 10)
-        console.log("Troco vazio esperado: ", troco)
         const trocoEsperado = []
         assert.deepEqual(troco, trocoEsperado)
       })
