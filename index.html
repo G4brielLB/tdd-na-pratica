@@ -16,11 +16,19 @@
 
     <script>
       // A sua solução será escrita aqui!
+      // notas disponíveis ordenadas de forma decrescente
+      function obterNotasOrdenadas(estoque) {
+        return Object.keys(estoque).map(Number).sort((a, b) => b - a)
+      }
+
+      // calcula o troco respeitando o estoque
       function calcularTroco(precoDoProduto, dinheiroRecebido, estoque) {
         let faltante = dinheiroRecebido - precoDoProduto
-        let troco = []
-        for (const nota of Object.keys(estoque).map(Number).sort((a, b) => b - a)) {
-          while (faltante >= nota && estoque[nota] > 0) {
+        if (faltante <= 0) return []
+        const troco = []
+        
+        for (const nota of obterNotasOrdenadas(estoque)) {
+          while (faltante >= nota && (estoque[nota] ?? 0) > 0) {
             troco.push(nota)
             faltante -= nota
             estoque[nota] -= 1
